@@ -1,4 +1,4 @@
-import { Model, Types } from 'mongoose'
+import { Model, Schema } from 'mongoose'
 import { IService } from '../services/services.interface'
 
 export type IServiceTypes = {
@@ -13,7 +13,7 @@ export type ITermsAndConditions = {
 export type ISubService = {
   id?: string
   title: string
-  category: Types.ObjectId | IService
+  category: Schema.Types.ObjectId | IService
   serviceTypes: IServiceTypes
   images: string[]
   features: string[]
@@ -23,7 +23,7 @@ export type ISubService = {
   termsCondition?: ITermsAndConditions[]
   discount?: string
   warrantyTime?: string
-  feedback?: [string]
+  feedback?: Schema.Types.ObjectId
   rating?: 0 | 1 | 2 | 3 | 4 | 5
 }
 

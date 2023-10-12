@@ -7,9 +7,11 @@ const router = express.Router()
 
 router.post(
   '/',
-  RequestValidation.ValidateRequest(SubServicesValidation.createSubServices),
+  // RequestValidation.ValidateRequest(SubServicesValidation.createSubServices),
   SubServicesController.createSubServices,
 )
+router.get('/', SubServicesController.getAllSubServices)
+router.get('/:id', SubServicesController.getSingleSubServices)
 
 export const SubServicesRoutes = {
   router,

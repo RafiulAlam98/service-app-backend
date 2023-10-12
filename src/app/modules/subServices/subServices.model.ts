@@ -6,10 +6,11 @@ const SubServiceSchema = new Schema<ISubService>(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     category: {
       type: Schema.Types.ObjectId,
-      ref: 'Service', // Reference to the Feedback model
+      ref: 'services', // Reference to the Feedback model
       required: true,
     },
     serviceTypes: [
@@ -65,7 +66,8 @@ const SubServiceSchema = new Schema<ISubService>(
       required: false,
     },
     feedback: {
-      type: [String],
+      type: Schema.Types.ObjectId,
+      ref: 'feedback',
       required: true,
     },
     rating: {

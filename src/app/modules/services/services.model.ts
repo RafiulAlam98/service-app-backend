@@ -5,6 +5,7 @@ const ServiceSchema = new Schema<IService>({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
 })
 
