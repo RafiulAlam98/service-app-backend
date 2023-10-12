@@ -10,6 +10,11 @@ router.post(
   RequestValidation.ValidateRequest(ServiceValidation.createService),
   AllServiceController.createService,
 )
+router.get(
+  '/',
+
+  AllServiceController.getAllServices,
+)
 
 export const AllServiceRoutes = {
   router,

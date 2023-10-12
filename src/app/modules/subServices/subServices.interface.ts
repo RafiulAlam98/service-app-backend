@@ -6,6 +6,7 @@ export type ISubService = {
   title: string
   category: Types.ObjectId | IService
   elements: string[]
+  images: string[]
   cost: string
   features: string[]
   includedOption: string[]

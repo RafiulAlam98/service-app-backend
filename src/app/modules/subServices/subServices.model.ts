@@ -15,6 +15,10 @@ const SubServiceSchema = new Schema<ISubService>({
     type: [String],
     required: true,
   },
+  images: {
+    type: [String],
+    required: true,
+  },
   cost: {
     type: String,
     required: true,
