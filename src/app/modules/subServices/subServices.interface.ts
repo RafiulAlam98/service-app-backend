@@ -1,17 +1,26 @@
 import { Model, Types } from 'mongoose'
 import { IService } from '../services/services.interface'
 
+export type IServiceTypes = {
+  name: string
+  cost: string
+}
+export type ITermsAndConditions = {
+  title: string
+  details: string
+}
+
 export type ISubService = {
   id?: string
   title: string
   category: Types.ObjectId | IService
-  elements: string[]
+  serviceTypes: IServiceTypes
   images: string[]
-  cost: string
   features: string[]
-  includedOption: string[]
-  excludedOption: string[]
-  termsCondition: string[]
+  description: string
+  includedOption?: string[]
+  excludedOption?: string[]
+  termsCondition?: ITermsAndConditions[]
   discount?: string
   warrantyTime?: string
   feedback?: [string]
