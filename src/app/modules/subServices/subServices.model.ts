@@ -65,11 +65,7 @@ const SubServiceSchema = new Schema<ISubService>(
       type: String,
       required: false,
     },
-    feedback: {
-      type: Schema.Types.ObjectId,
-      ref: 'feedback',
-      required: true,
-    },
+
     rating: {
       type: Number,
       enum: [0, 1, 2, 3, 4, 5],
