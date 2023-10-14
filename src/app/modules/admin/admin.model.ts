@@ -3,9 +3,8 @@ import { AdminModel, IAdmin } from './admin.interface'
 
 const AdminSchema = new Schema<IAdmin>(
   {
-    role: {
+    email: {
       type: String,
-      enum: ['admin'],
       required: true,
     },
     name: {
@@ -25,10 +24,28 @@ const AdminSchema = new Schema<IAdmin>(
       type: String,
       required: true,
     },
-
+    password: {
+      type: String,
+      required: true,
+      select: 0,
+    },
+    role: {
+      type: String,
+      enum: ['admin'],
+      required: true,
+    },
     address: {
       type: String,
       required: true,
+    },
+    profileImg: {
+      type: String,
+      required: true,
+    },
+    permissions: {
+      type: String,
+      enum: ['view', 'update', 'delete'],
+      required: false,
     },
   },
   {
@@ -39,4 +56,4 @@ const AdminSchema = new Schema<IAdmin>(
   },
 )
 
-export const Admin = model<IAdmin, AdminModel>('Admin', AdminSchema)
+export const Admin = model<IAdmin, AdminModel>('admin', AdminSchema)

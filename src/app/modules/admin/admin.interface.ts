@@ -7,8 +7,8 @@ export type IAdmin = {
   phoneNo: string
   phoneNumber: string
   password: string
-  address: string
   role: 'admin'
+  address: string
   profileImg: string
   permissions?: ['view', 'update', 'delete']
 }
