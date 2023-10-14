@@ -1,9 +1,11 @@
-import { SubServices } from './subServices.model';
-import { ISubService } from "./subServices.interface";
+import ApiError from '../../errors/ApiError'
+import { ISubService } from './subServices.interface'
+import { SubServices } from './subServices.model'
+import httpStatus from 'http-status'
 
 const createSubServices = async (payload: ISubService) => {
-    const result = await SubServices.create(payload)
-    return result
+  const result = await SubServices.create(payload)
+  return result
 }
 
 const getAllSubServices = async () => {
@@ -16,8 +18,32 @@ const getSingleSubServices = async (id: string) => {
   return result
 }
 
+const updateSubServices = async (
+  id: string,
+  paylod: ISubService,
+): Promise<ISubService | null> => {
+  const result = await SubServices.findOneAndUpdate({ _id: id }, paylod, {
+    new: true,
+  })
+  return result
+}
+
+const deleteSubServices = async (id: string) => {
+  const subServices = await SubServices.findById(id)
+  if (!subServices) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      'SubServices Not Found and Deletion Unsuccessfull',
+    )
+  }
+  const result = SubServices.findByIdAndDelete(id)
+  return result
+}
+
 export const SubServicesService = {
   createSubServices,
   getAllSubServices,
   getSingleSubServices,
+  updateSubServices,
+  deleteSubServices,
 }

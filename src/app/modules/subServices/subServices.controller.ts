@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { catchAsync } from "../../../shared/catchAsync";
-import { SubServicesService } from "./subServices.service";
-import { sendResponse } from "../../../shared/sendResponse";
-import httpStatus from "http-status";
 
+import { SubServicesService } from "./subServices.service";
+import { catchAsync } from '../../../shared/catchAsync'
+import httpStatus from 'http-status'
+import { sendResponse } from '../../../shared/sendResponse'
 
 const createSubServices = catchAsync(async (req: Request, res: Response) => {
   const result = await SubServicesService.createSubServices(req.body)
@@ -34,8 +34,33 @@ const getSingleSubServices = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const updateSubServices = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const updatedData = req.body
+  const result = await SubServicesService.updateSubServices(id, updatedData)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Sub Service updated successfully',
+    data: result,
+  })
+})
+
+const deleteSubServices = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+  const result = await SubServicesService.deleteSubServices(id)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'SubService deleted successfully',
+    data: result,
+  })
+})
+
 export const SubServicesController = {
   createSubServices,
   getAllSubServices,
   getSingleSubServices,
+  updateSubServices,
+  deleteSubServices,
 }

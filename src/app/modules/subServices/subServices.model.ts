@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose'
 import { ISubService, SubServiceModel } from './subServices.interface'
+import { Schema, model } from 'mongoose'
 
 const SubServiceSchema = new Schema<ISubService>(
   {
@@ -21,7 +21,23 @@ const SubServiceSchema = new Schema<ISubService>(
         },
         cost: {
           type: String,
-          required: true,
+          required: false,
+        },
+        quantity: [
+          {
+            priceRange: {
+              type: String,
+              required: false,
+            },
+            quantityRange: {
+              type: String,
+              required: false,
+            },
+          },
+        ],
+        systemType: {
+          type: String,
+          required: false,
         },
       },
     ],

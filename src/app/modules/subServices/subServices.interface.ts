@@ -1,9 +1,17 @@
 import { Model, Schema } from 'mongoose'
+
 import { IService } from '../services/services.interface'
+
+export type IQuantity = {
+  quantityRange?: string
+  priceRange?: string
+}
 
 export type IServiceTypes = {
   name: string
-  cost: string
+  cost?: string
+  quantity?: IQuantity[]
+  systemType?: string
 }
 export type ITermsAndConditions = {
   title: string

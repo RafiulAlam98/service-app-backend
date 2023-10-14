@@ -1,8 +1,9 @@
 import { Request, Response } from 'express'
-import httpStatus from 'http-status'
-import { catchAsync } from '../../../shared/catchAsync'
-import { sendResponse } from '../../../shared/sendResponse'
+
 import { UserService } from './user.service'
+import { catchAsync } from '../../../shared/catchAsync'
+import httpStatus from 'http-status'
+import { sendResponse } from '../../../shared/sendResponse'
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const result = await UserService.createUser(req.body)
@@ -47,6 +48,17 @@ const updateSingleUser = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+  const result = await UserService.deleteSingleUser(id)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User deleted successfully',
+    data: result,
+  })
+})
+
 const userProfile = catchAsync(async (req: Request, res: Response) => {
   const { user } = req
 
@@ -60,16 +72,6 @@ const userProfile = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params
-  const result = await UserService.deleteSingleUser(id)
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User deleted successfully',
-    data: result,
-  })
-})
 
 // const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
 //   const { user } = req

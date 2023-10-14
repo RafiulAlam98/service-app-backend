@@ -1,7 +1,5 @@
-import express from 'express'
-import { RequestValidation } from '../../middlewares/validateRequest'
-import { SubServicesValidation } from './subServices.validation'
 import { SubServicesController } from './subServices.controller'
+import express from 'express'
 
 const router = express.Router()
 
@@ -12,6 +10,8 @@ router.post(
 )
 router.get('/', SubServicesController.getAllSubServices)
 router.get('/:id', SubServicesController.getSingleSubServices)
+router.patch('/:id', SubServicesController.updateSubServices)
+router.delete('/:id', SubServicesController.deleteSubServices)
 
 export const SubServicesRoutes = {
   router,
