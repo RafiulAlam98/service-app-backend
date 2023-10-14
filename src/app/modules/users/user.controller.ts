@@ -14,18 +14,6 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-const createAdmin = catchAsync(async (req: Request, res: Response) => {
-  const { ...user } = req.body
-
-  const result = await UserService.createAdmin(user)
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Admin created successfully',
-    data: result,
-  })
-})
-
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UserService.getAllUserService()
   sendResponse(res, {
@@ -46,6 +34,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
+
 const updateSingleUser = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
   const updatedData = req.body
@@ -61,7 +50,6 @@ const updateSingleUser = catchAsync(async (req: Request, res: Response) => {
 const userProfile = catchAsync(async (req: Request, res: Response) => {
   const { user } = req
 
-  console.log(req)
   const result = await UserService.userProfile(user)
 
   sendResponse(res, {
@@ -72,10 +60,9 @@ const userProfile = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-
 const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id
-  const result = await UserService.deleteSingleUserService(id)
+  const { id } = req.params
+  const result = await UserService.deleteSingleUser(id)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -84,25 +71,25 @@ const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
-  const { user } = req
+// const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
+//   const { user } = req
 
-  const result = await UserService.updateUserProfile(user, req.body)
-  sendResponse(res, {
-    success: true,
-    statusCode: httpStatus.OK,
-    message: 'User updated successfully!',
-    data: result,
-  })
-})
+//   const result = await UserService.updateUserProfile(user, req.body)
+//   sendResponse(res, {
+//     success: true,
+//     statusCode: httpStatus.OK,
+//     message: 'User updated successfully!',
+//     data: result,
+//   })
+// })
 
 export const UserController = {
   createUser,
   getAllUsers,
   getSingleUser,
-  createAdmin,
+
   userProfile,
   updateSingleUser,
   deleteSingleUser,
-  updateUserProfile,
+  // updateUserProfile,
 }

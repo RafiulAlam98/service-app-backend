@@ -1,25 +1,20 @@
-import { Model, Types } from 'mongoose'
+import { Model } from 'mongoose'
 import { UserName } from '../../../interface/username'
-import { IAdmin } from '../admin/admin.interface'
 
 export type IUser = {
+  email: string
+  name?: UserName
   phoneNumber: string
   password: string
-  role: 'seller' | 'buyer' | 'admin'
-  needsPasswordChange?: true | false
-  name: UserName
-  address: string
-  budget?: number
-  income?: number
-  admin?: Types.ObjectId | IAdmin
+  role: 'user'
+  address?: string
+  profileImg?: string
 }
 
 export type UserModel = {
   isUserExists(
-    phoneNumber: string,
-  ): Promise<
-    Pick<IUser, 'phoneNumber' | 'password' | 'needsPasswordChange' | 'role'>
-  >
+    email: string,
+  ): Promise<Pick<IUser, 'email' | 'phoneNumber' | 'password' | 'role'>>
   isPasswordMatched(
     givenPassword: string,
     savedPassword: string,

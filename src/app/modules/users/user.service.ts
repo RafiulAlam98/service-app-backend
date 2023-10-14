@@ -1,57 +1,20 @@
 import httpStatus from 'http-status'
 import { JwtPayload } from 'jsonwebtoken'
-import mongoose from 'mongoose'
-import config from '../../../config'
-
 import ApiError from '../../errors/ApiError'
-import { Admin } from '../admin/admin.model'
-
 import { IUser } from './user.interface'
 import { User } from './user.model'
 
-const createUser = async () => {}
-
-// admin service
-const createAdmin = async (user: IUser): Promise<IUser | null> => {
-  if (!user.password) {
-    user.password = config.password as string
+const createUser = async (payload: IUser) => {
+  const userExist = await User.findOne({ email: payload.email })
+  if (userExist) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      'User Already Exists, Please try with another Email Id',
+    )
   }
-
-  let newAllUserData = null
-
-  const session = await mongoose.startSession()
-
-  try {
-    session.startTransaction()
-    const { role, phoneNumber } = user
-
-    if (role === 'admin') {
-      const result = await Admin.findOne({ phoneNumber: phoneNumber })
-      if (result) {
-        throw new ApiError(httpStatus.BAD_REQUEST, 'Admin Already Exists')
-      }
-      const newAdmin = await Admin.create([user], { session })
-      if (!newAdmin) {
-        throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create admin')
-      }
-      user.admin = newAdmin[0]._id
-    }
-
-    const newUser = await User.create([user], { session })
-    if (!newUser) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create a User')
-    }
-
-    newAllUserData = newUser[0]
-
-    await session.commitTransaction()
-    await session.endSession()
-  } catch (error) {
-    await session.abortTransaction()
-    await session.endSession()
-    throw error
-  }
-  return newAllUserData
+  payload.role = 'user'
+  const result = await User.create(payload)
+  return result
 }
 
 //get all users
@@ -76,7 +39,17 @@ const updateSingleUser = async (
   return result
 }
 
-const deleteSingleUserService = async () => {}
+const deleteSingleUser = async (id: string) => {
+  const userExist = await User.findById(id)
+  if (!userExist) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      'User Not Found and Deletion Unsuccessfull',
+    )
+  }
+  const result = User.findByIdAndDelete(id)
+  return result
+}
 
 const userProfile = async (user: JwtPayload | null) => {
   if (!user) {
@@ -93,9 +66,9 @@ export const UserService = {
   createUser,
   getAllUserService,
   getSingleUser,
-  createAdmin,
+
   updateUserProfile,
   userProfile,
   updateSingleUser,
-  deleteSingleUserService,
+  deleteSingleUser,
 }
