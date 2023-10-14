@@ -55,7 +55,7 @@ const userProfile = async (user: JwtPayload | null) => {
   if (!user) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized')
   }
-  const result = await User.find({ phoneNumber: user.phoneNumber })
+  const result = await User.find({ email: user.phoneNumber })
 
   return result
 }
