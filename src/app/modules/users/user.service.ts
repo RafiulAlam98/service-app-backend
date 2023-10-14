@@ -9,7 +9,7 @@ const createUser = async (payload: IUser) => {
   if (userExist) {
     throw new ApiError(
       httpStatus.BAD_REQUEST,
-      'User Already Exists, Please try with another Email Id',
+      'An user already exist to this email and phone Number',
     )
   }
   payload.role = 'user'
