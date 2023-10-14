@@ -14,6 +14,10 @@ const createNewAdmin = async (payload: IAdmin) => {
     )
   }
   payload.role = 'admin'
+  const user = await User.create(payload)
+  if (!user) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Admin Can not created')
+  }
   const result = await Admin.create(payload)
   return result
 }

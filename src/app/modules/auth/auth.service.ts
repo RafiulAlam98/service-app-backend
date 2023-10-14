@@ -7,11 +7,10 @@ import { User } from '../users/user.model'
 import { IRefreshTokenResponse, IUserLogin } from './auth.interface'
 
 const loginUser = async (payload: IUserLogin) => {
-  const { phoneNumber: phone, password } = payload
-
+  const { email: emailId, password } = payload
 
   // check user exist
-  const isUserExists = await User.isUserExists(phone)
+  const isUserExists = await User.isUserExists(emailId)
 
   if (!isUserExists) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist')
@@ -25,11 +24,11 @@ const loginUser = async (payload: IUserLogin) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect')
   }
 
-  const { phoneNumber, role, needsPasswordChange } = isUserExists
+  const { phoneNumber, role, email } = isUserExists
 
   // create access token
   const accessToken = jwtHelpers.createToken(
-    { phoneNumber, role },
+    { email, role },
     config.jwt.secret as Secret,
     config.jwt.secret_expire_in as string,
   )
@@ -43,7 +42,7 @@ const loginUser = async (payload: IUserLogin) => {
   return {
     accessToken,
     refreshToken,
-    needsPasswordChange,
+    email,
     role,
   }
 }

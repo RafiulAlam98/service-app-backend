@@ -6,7 +6,7 @@ export type IUser = {
   name?: UserName
   phoneNumber: string
   password: string
-  role: 'user'
+  role: 'user' | 'admin'
   address?: string
   profileImg?: string
 }

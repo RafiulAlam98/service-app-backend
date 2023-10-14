@@ -1,12 +1,30 @@
 import express from 'express'
 import { UserController } from './user.controller'
+import { ENUM_USER_ROLE } from '../../../enums/user'
+import auth from '../../middlewares/auth'
 const router = express.Router()
 
 router.post('/signup', UserController.createUser)
-router.get('/', UserController.getAllUsers)
-router.get('/:id', UserController.getSingleUser)
-router.patch('/:id', UserController.updateSingleUser)
-router.delete('/:id', UserController.deleteSingleUser)
+router.get(
+  '/',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  UserController.getAllUsers,
+)
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  UserController.getSingleUser,
+)
+router.patch(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  UserController.updateSingleUser,
+)
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  UserController.deleteSingleUser,
+)
 
 // router.patch(
 //   '/my-profile ',

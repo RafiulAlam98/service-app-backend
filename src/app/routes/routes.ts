@@ -4,6 +4,7 @@ import { AllServiceRoutes } from '../modules/services/services.routes'
 import { FeedbackRoutes } from '../modules/feedback/feedback.routes'
 import { UserRoutes } from '../modules/users/user.route'
 import { AdminRoutes } from '../modules/admin/admin.route'
+import { AuthRoutes } from '../modules/auth/auth.route'
 
 const router = express.Router()
 const moduleRoutes = [
@@ -26,6 +27,10 @@ const moduleRoutes = [
   {
     path: '/admins',
     route: AdminRoutes.router,
+  },
+  {
+    path: '/auth',
+    route: AuthRoutes.router,
   },
 ]
 
