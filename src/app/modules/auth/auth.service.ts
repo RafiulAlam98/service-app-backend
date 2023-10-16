@@ -13,7 +13,7 @@ const loginUser = async (payload: IUserLogin) => {
   const isUserExists = await User.isUserExists(emailId)
 
   if (!isUserExists) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist')
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User does not exist')
   }
 
   //matched password
@@ -25,6 +25,7 @@ const loginUser = async (payload: IUserLogin) => {
   }
 
   const { phoneNumber, role, email } = isUserExists
+  console.log(email)
 
   // create access token
   const accessToken = jwtHelpers.createToken(
@@ -42,7 +43,7 @@ const loginUser = async (payload: IUserLogin) => {
   return {
     accessToken,
     refreshToken,
-    email,
+    emailId,
     role,
   }
 }
@@ -50,7 +51,6 @@ const loginUser = async (payload: IUserLogin) => {
 const refreshTokenService = async (
   token: string,
 ): Promise<IRefreshTokenResponse> => {
-
   let verifiedToken = null
   try {
     verifiedToken = jwtHelpers.verifyToken(
@@ -66,7 +66,7 @@ const refreshTokenService = async (
 
   const isUserExists = await User.isUserExists(phoneNumber)
   if (!isUserExists) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist')
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User does not exist')
   }
 
   //generate new token

@@ -4,7 +4,7 @@ import { UserName } from '../../../interface/username'
 export type IUser = {
   email: string
   name?: UserName
-  phoneNumber: string
+  phoneNumber?: string
   password: string
   role: 'user' | 'admin'
   address?: string
