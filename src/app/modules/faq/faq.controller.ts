@@ -58,7 +58,7 @@ const deleteFaq = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-export const AllServiceController = {
+export const AllFaqController = {
   createFaq,
   getAllfaq,
   getSingleFaq,
