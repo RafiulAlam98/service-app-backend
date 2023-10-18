@@ -7,6 +7,8 @@ import { FeedbackRoutes } from '../modules/feedback/feedback.routes'
 import { SubServicesRoutes } from '../modules/subServices/subServices.routes'
 import { UserRoutes } from '../modules/users/user.route'
 import express from 'express'
+import { AllUpcomingServiceRoutes } from '../modules/upcomingService/upcomingService.routes'
+import { AllEventsRoutes } from '../modules/events/events.routes'
 
 const router = express.Router()
 const moduleRoutes = [
@@ -41,6 +43,14 @@ const moduleRoutes = [
   {
     path: '/blog',
     route: AllBlogRoutes.router,
+  },
+  {
+    path: '/upcoming-service',
+    route: AllUpcomingServiceRoutes.router,
+  },
+  {
+    path: '/events',
+    route: AllEventsRoutes.router,
   },
 ]
 
