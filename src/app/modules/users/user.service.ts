@@ -57,7 +57,7 @@ const userProfile = async (user: JwtPayload | null) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized')
   }
 
-  const result = await User.find({ email: user.email })
+  const result = await User.findOne({ email: user.email })
 
   return result
 }
