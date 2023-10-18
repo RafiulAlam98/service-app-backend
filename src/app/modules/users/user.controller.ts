@@ -70,17 +70,17 @@ const userProfile = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-// const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
-//   const { user } = req
+const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
+  const { user } = req
 
-//   const result = await UserService.updateUserProfile(user, req.body)
-//   sendResponse(res, {
-//     success: true,
-//     statusCode: httpStatus.OK,
-//     message: 'User updated successfully!',
-//     data: result,
-//   })
-// })
+  const result = await UserService.updateUserProfile(user, req.body)
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'User updated successfully!',
+    data: result,
+  })
+})
 
 export const UserController = {
   createUser,
@@ -89,5 +89,5 @@ export const UserController = {
   userProfile,
   updateSingleUser,
   deleteSingleUser,
-  // updateUserProfile,
+  updateUserProfile,
 }

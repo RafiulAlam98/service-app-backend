@@ -17,6 +17,7 @@ const auth =
       //verify token
 
       let verifiedUser = null
+      console.log(roles)
 
       try {
         verifiedUser = jwt.verify(
@@ -26,12 +27,13 @@ const auth =
       } catch (error) {
         throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Token')
       }
-      console.log(verifiedUser)
 
       req.user = verifiedUser
       if (roles.length && !roles.includes(verifiedUser.role)) {
         throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden')
       }
+
+      console.log('verifiedUser', verifiedUser)
 
       next()
     } catch (error) {

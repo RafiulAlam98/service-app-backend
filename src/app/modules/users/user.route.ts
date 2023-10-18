@@ -10,6 +10,12 @@ router.get(
   auth(ENUM_USER_ROLE.USER, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
   UserController.userProfile,
 )
+router.patch(
+  '/update-my-profile',
+  auth(ENUM_USER_ROLE.USER, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  UserController.updateUserProfile,
+)
+
 
 router.post('/signup', UserController.createUser)
 router.get(
@@ -34,11 +40,6 @@ router.delete(
   UserController.deleteSingleUser,
 )
 
-// router.patch(
-//   '/my-profile ',
-//   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.BUYER, ENUM_USER_ROLE.SELLER),
-//   UserController.updateUserProfile,
-// )
 
 export const UserRoutes = {
   router,

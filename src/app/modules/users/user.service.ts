@@ -62,7 +62,19 @@ const userProfile = async (user: JwtPayload | null) => {
   return result
 }
 
-const updateUserProfile = async () => {}
+const updateUserProfile = async (
+  user: JwtPayload | null,
+  payload: Partial<IUser>,
+) => {
+  if (!user) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized')
+  }
+
+  const result = await User.findOneAndUpdate({ email: user.email }, payload, {
+    new: true,
+  })
+  return result
+}
 
 export const UserService = {
   createUser,
