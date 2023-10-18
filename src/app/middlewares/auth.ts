@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import httpStatus from 'http-status'
-import { Secret } from 'jsonwebtoken'
-import config from '../../config'
-import { jwtHelpers } from '../../helpers/jwtHelpers'
+import jwt, { JwtPayload, Secret } from 'jsonwebtoken'
 import ApiError from '../errors/ApiError'
+import config from '../../config'
 
 const auth =
   (...roles: string[]) =>
@@ -18,25 +17,21 @@ const auth =
       //verify token
 
       let verifiedUser = null
+
       try {
-        verifiedUser = jwtHelpers.verifyToken(
+        verifiedUser = jwt.verify(
           token,
           config.jwt.secret as Secret,
-        )
+        ) as JwtPayload
       } catch (error) {
         throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Token')
       }
-
-
+      console.log(verifiedUser)
 
       req.user = verifiedUser
-
-      console.log('verifiedUser', verifiedUser)
-      //role guard
       if (roles.length && !roles.includes(verifiedUser.role)) {
         throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden')
       }
-
 
       next()
     } catch (error) {

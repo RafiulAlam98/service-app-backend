@@ -14,7 +14,6 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
-
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UserService.getAllUserService()
   sendResponse(res, {
@@ -60,9 +59,8 @@ const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
 })
 
 const userProfile = catchAsync(async (req: Request, res: Response) => {
-
   const { user } = req
-  console.log('user', user)
+
   const result = await UserService.userProfile(user)
   sendResponse(res, {
     success: true,
@@ -71,7 +69,6 @@ const userProfile = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
-
 
 // const updateUserProfile = catchAsync(async (req: Request, res: Response) => {
 //   const { user } = req
@@ -89,7 +86,6 @@ export const UserController = {
   createUser,
   getAllUsers,
   getSingleUser,
-
   userProfile,
   updateSingleUser,
   deleteSingleUser,

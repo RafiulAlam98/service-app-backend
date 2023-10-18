@@ -11,7 +11,6 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   const result = await AuthService.loginUser(loginData)
 
   const { refreshToken, ...others } = result
-  console.log('others', others)
   const options = {
     secure: config.env === 'production',
     httpOnly: true,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from 'http-status'
 import { JwtPayload } from 'jsonwebtoken'
 import ApiError from '../../errors/ApiError'
@@ -55,7 +56,8 @@ const userProfile = async (user: JwtPayload | null) => {
   if (!user) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized')
   }
-  const result = await User.find({ email: user.phoneNumber })
+
+  const result = await User.find({ email: user.email })
 
   return result
 }

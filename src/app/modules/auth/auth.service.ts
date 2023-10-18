@@ -1,5 +1,5 @@
 import httpStatus from 'http-status'
-import { Secret } from 'jsonwebtoken'
+import jwt, { Secret } from 'jsonwebtoken'
 import config from '../../../config'
 import { jwtHelpers } from '../../../helpers/jwtHelpers'
 import ApiError from '../../errors/ApiError'
@@ -25,13 +25,19 @@ const loginUser = async (payload: IUserLogin) => {
   }
 
   const { phoneNumber, role, email } = isUserExists
+
   console.log(email)
 
   // create access token
-  const accessToken = jwtHelpers.createToken(
-    { email, role },
+  const accessToken = jwt.sign(
+    {
+      email: isUserExists.email,
+      role: isUserExists.role,
+    },
     config.jwt.secret as Secret,
-    config.jwt.secret_expire_in as string,
+    {
+      expiresIn: config.jwt.secret_expire_in,
+    },
   )
 
   const refreshToken = jwtHelpers.createToken(
