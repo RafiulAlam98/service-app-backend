@@ -5,6 +5,7 @@ import { AllFaqRoutes } from '../modules/faq/faq.routes'
 import { AllServiceRoutes } from '../modules/services/services.routes'
 import { AllUpcomingServiceRoutes } from '../modules/upcomingService/upcomingService.routes'
 import { AuthRoutes } from '../modules/auth/auth.route'
+import { FeedbackRoutes } from '../modules/feedback/feedback.routes'
 import { ReviewRoutes } from '../modules/review/review.routes'
 import { SubServicesRoutes } from '../modules/subServices/subServices.routes'
 import { UserRoutes } from '../modules/users/user.route'
@@ -21,8 +22,12 @@ const moduleRoutes = [
     route: SubServicesRoutes.router,
   },
   {
-    path: '/feedback',
+    path: '/review',
     route: ReviewRoutes.router,
+  },
+  {
+    path: '/feedback',
+    route: FeedbackRoutes.router,
   },
   {
     path: '/users',
