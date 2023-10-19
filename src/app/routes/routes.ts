@@ -1,14 +1,14 @@
 import { AdminRoutes } from '../modules/admin/admin.route'
 import { AllBlogRoutes } from '../modules/blog/blog.routes'
+import { AllEventsRoutes } from '../modules/events/events.routes'
 import { AllFaqRoutes } from '../modules/faq/faq.routes'
 import { AllServiceRoutes } from '../modules/services/services.routes'
+import { AllUpcomingServiceRoutes } from '../modules/upcomingService/upcomingService.routes'
 import { AuthRoutes } from '../modules/auth/auth.route'
-import { FeedbackRoutes } from '../modules/feedback/feedback.routes'
+import { ReviewRoutes } from '../modules/review/review.routes'
 import { SubServicesRoutes } from '../modules/subServices/subServices.routes'
 import { UserRoutes } from '../modules/users/user.route'
 import express from 'express'
-import { AllUpcomingServiceRoutes } from '../modules/upcomingService/upcomingService.routes'
-import { AllEventsRoutes } from '../modules/events/events.routes'
 
 const router = express.Router()
 const moduleRoutes = [
@@ -22,7 +22,7 @@ const moduleRoutes = [
   },
   {
     path: '/feedback',
-    route: FeedbackRoutes.router,
+    route: ReviewRoutes.router,
   },
   {
     path: '/users',

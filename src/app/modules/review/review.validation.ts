@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const addFeedback = z.object({
+const addReview = z.object({
   body: z.object({
     firstName: z.string({
       required_error: 'First Name is required',
@@ -39,6 +39,6 @@ const addFeedback = z.object({
   }),
 })
 
-export const FeedbackValidation = {
-  addFeedback,
+export const ReviewValidation = {
+  addReview,
 }

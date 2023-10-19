@@ -1,7 +1,8 @@
 import { Model, Schema } from 'mongoose'
+
 import { ISubService } from '../subServices/subServices.interface'
 
-export type IFeedback = {
+export type IReview = {
   serviceId: Schema.Types.ObjectId | ISubService
   firstName: string
   lastName?: string
@@ -12,4 +13,4 @@ export type IFeedback = {
   reviewImg?: string
   shortVideo?: string
 }
-export type FeedBackModel = Model<IFeedback>
+export type ReviewModel = Model<IReview>

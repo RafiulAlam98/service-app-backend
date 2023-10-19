@@ -1,7 +1,7 @@
+import { IReview, ReviewModel } from './review.interface'
 import { Schema, model } from 'mongoose'
-import { FeedBackModel, IFeedback } from './feedback.interface'
 
-const FeedbackSchema = new Schema<IFeedback>(
+const ReviewSchema = new Schema<IReview>(
   {
     firstName: {
       type: String,
@@ -49,7 +49,4 @@ const FeedbackSchema = new Schema<IFeedback>(
   },
 )
 
-export const FeedBack = model<IFeedback, FeedBackModel>(
-  'feedback',
-  FeedbackSchema,
-)
+export const Review = model<IReview, ReviewModel>('review', ReviewSchema)
