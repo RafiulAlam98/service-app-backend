@@ -10,7 +10,7 @@ const getAllReview = async () => {
   return result
 }
 const getSingleReview = async (id: string) => {
-  const result = await Review.findById(id).populate('serviceId')
+  const result = await Review.findOne({ serviceId: id })
   return result
 }
 
