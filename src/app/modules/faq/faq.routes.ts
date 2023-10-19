@@ -5,7 +5,7 @@ import express from 'express'
 
 const router = express.Router()
 
-router.post('/', auth(ENUM_USER_ROLE.ADMIN), AllFaqController.createFaq)
+router.post('/', AllFaqController.createFaq)
 router.get('/', AllFaqController.getAllfaq)
 router.get('/:id', AllFaqController.getSingleFaq)
 router.patch('/:id', auth(ENUM_USER_ROLE.ADMIN), AllFaqController.updateFaq)

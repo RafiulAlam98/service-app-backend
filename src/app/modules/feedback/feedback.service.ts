@@ -6,11 +6,11 @@ const addFeedback = async (payload: IFeedback) => {
   return result
 }
 const getAllFeedback = async () => {
-  const result = await Feedback.find().populate('serviceId')
+  const result = await Feedback.find()
   return result
 }
 const getSingleFeedback = async (id: string) => {
-  const result = await Feedback.findById(id).populate('serviceId')
+  const result = await Feedback.findById(id)
   return result
 }
 

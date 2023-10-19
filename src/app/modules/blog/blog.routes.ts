@@ -5,7 +5,7 @@ import express from 'express'
 
 const router = express.Router()
 
-router.post('/', auth(ENUM_USER_ROLE.ADMIN), AllBlogController.createBlog)
+router.post('/', AllBlogController.createBlog)
 router.get('/', AllBlogController.getAllBlog)
 router.get('/:id', AllBlogController.getSingleBlog)
 router.patch('/:id', auth(ENUM_USER_ROLE.ADMIN), AllBlogController.updateBlog)
