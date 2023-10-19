@@ -10,7 +10,7 @@ const createOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Sub Services Created Successfully',
+    message: 'Order Created Successfully',
     data: result,
   })
 })
@@ -19,7 +19,7 @@ const getAllOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Sub Services retrieved Successfully',
+    message: 'Order retrieved Successfully',
     data: result,
   })
 })
@@ -29,7 +29,7 @@ const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Sub Service retrieved Successfully',
+    message: 'Order retrieved Successfully',
     data: result,
   })
 })
@@ -41,7 +41,7 @@ const updateSingleOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Sub Service updated successfully',
+    message: 'Order updated successfully',
     data: result,
   })
 })
@@ -52,7 +52,7 @@ const deleteSingleOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'SubService deleted successfully',
+    message: 'Order deleted successfully',
     data: result,
   })
 })

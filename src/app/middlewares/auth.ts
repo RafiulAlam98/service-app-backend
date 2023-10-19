@@ -17,7 +17,6 @@ const auth =
       //verify token
 
       let verifiedUser = null
-      console.log(roles)
 
       try {
         verifiedUser = jwt.verify(

@@ -17,7 +17,7 @@ const OrderSchema = new Schema<IOrders>(
       type: String,
       required: true,
     },
-    email: {
+    user: {
       type: String,
       required: true,
     },

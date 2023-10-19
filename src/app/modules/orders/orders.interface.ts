@@ -10,7 +10,7 @@ export type IAddress = {
 export type IOrders = {
   date: string
   slot: string
-  email: string
+  user: string
   phone: string
   address: IAddress
   order: Schema.Types.ObjectId
