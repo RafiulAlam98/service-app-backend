@@ -14,7 +14,7 @@ router.post(
   ReviewController.addReview,
 )
 router.get('/', ReviewController.getAllReview)
-router.get('/', ReviewController.getSingleReview)
+router.get('/:id', ReviewController.getSingleReview)
 
 export const ReviewRoutes = {
   router,
