@@ -32,7 +32,7 @@ const getAllOrder = async () => {
 }
 
 const getSingleOrder = async (id: string) => {
-  const result = await Orders.findOne({ email: id }).populate('order')
+  const result = await Orders.findOne({ user: id }).populate('order')
   return result
 }
 

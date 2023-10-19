@@ -10,7 +10,7 @@ const getAllReview = async () => {
   return result
 }
 const getSingleReview = async (id: string) => {
-  const result = await Review.findOne({ serviceId: id })
+  const result = await Review.find({ serviceId: id })
   return result
 }
 
