@@ -4,18 +4,14 @@ import { Orders } from './order.model'
 import { IOrders } from './orders.interface'
 
 const createOrder = async (payload: IOrders) => {
-  const { slot, user, date } = payload
-  const orders = await Orders.aggregate([
-    {
-      $match: {
-        date: date,
-        slot: slot,
-        email: user,
-      },
-    },
-  ]).exec()
+  const { slot, date } = payload
+  const query = {
+    slot: slot,
+    date: date,
+  }
+  const orders = await Orders.find(query)
 
-  if (orders) {
+  if (orders.length) {
     throw new ApiError(
       httpStatus.BAD_REQUEST,
       'You have already booked an order on the selected date and time slot',

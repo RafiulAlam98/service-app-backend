@@ -7,32 +7,29 @@ export type IQuantity = {
   priceRange?: string
 }
 
-export type IServiceTypes = {
-  name: string
-  cost?: string
-  quantity?: IQuantity[]
-  systemType?: string
-}
 export type ITermsAndConditions = {
   title: string
   details: string
 }
+export type IFaq = {
+  query: string
+  reply: string
+}
 
 export type ISubService = {
   id?: string
+  serviceId: Schema.Types.ObjectId | IService
   title: string
-  category: Schema.Types.ObjectId | IService
-  serviceTypes: IServiceTypes
   images: string[]
   features: string[]
   description: string
   includedOption?: string[]
   excludedOption?: string[]
   termsCondition?: ITermsAndConditions[]
-  discount?: string
-  warrantyTime?: string
-  feedback?: Schema.Types.ObjectId
+  warrantyHour?: string
+  faq: IFaq[]
   rating?: 0 | 1 | 2 | 3 | 4 | 5
+  totalRating: number
 }
 
 export type SubServiceModel = Model<ISubService>
