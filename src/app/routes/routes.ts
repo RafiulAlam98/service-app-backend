@@ -11,6 +11,7 @@ import { SubServicesRoutes } from '../modules/subServices/subServices.routes'
 import { UserRoutes } from '../modules/users/user.route'
 import express from 'express'
 import { OrderRoutes } from '../modules/orders/order.route'
+import { PackagesRoutes } from '../modules/packages/packages.routes'
 
 const router = express.Router()
 const moduleRoutes = [
@@ -21,6 +22,10 @@ const moduleRoutes = [
   {
     path: '/sub-services',
     route: SubServicesRoutes.router,
+  },
+  {
+    path: '/packages',
+    route: PackagesRoutes.router,
   },
   {
     path: '/review',

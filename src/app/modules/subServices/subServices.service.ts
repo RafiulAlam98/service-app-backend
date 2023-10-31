@@ -9,12 +9,12 @@ const createSubServices = async (payload: ISubService) => {
 }
 
 const getAllSubServices = async () => {
-  const result = await SubServices.find().populate('category')
+  const result = await SubServices.find().populate('serviceId')
   return result
 }
 
 const getSingleSubServices = async (id: string) => {
-  const result = await SubServices.findById(id).populate('category')
+  const result = await SubServices.findById(id).populate('serviceId')
   return result
 }
 

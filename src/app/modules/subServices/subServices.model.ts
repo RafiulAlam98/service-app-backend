@@ -3,15 +3,15 @@ import { Schema, model } from 'mongoose'
 
 const SubServiceSchema = new Schema<ISubService>(
   {
-    title: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     serviceId: {
       type: Schema.Types.ObjectId,
       ref: 'services',
       required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      unique: true,
     },
     images: {
       type: [String],

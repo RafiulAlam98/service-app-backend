@@ -19,7 +19,7 @@ export type IFaq = {
 export type ISubService = {
   id?: string
   serviceId: Schema.Types.ObjectId | IService
-  title: string
+  name: string
   images: string[]
   features: string[]
   description: string
