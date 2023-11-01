@@ -23,9 +23,22 @@ const getAllSubServices = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
-const getSingleSubServices = catchAsync(async (req: Request, res: Response) => {
+const getSubServicesByServiceId = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params
+    console.log(id)
+    const result = await SubServicesService.getSubServicesByServiceId(id)
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Sub Service retrieved Successfully',
+      data: result,
+    })
+  },
+)
+const getSubServicesById = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
-  const result = await SubServicesService.getSingleSubServices(id)
+  const result = await SubServicesService.getSubServicesById(id)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -60,7 +73,9 @@ const deleteSubServices = catchAsync(async (req: Request, res: Response) => {
 export const SubServicesController = {
   createSubServices,
   getAllSubServices,
-  getSingleSubServices,
+  getSubServicesByServiceId,
+  getSubServicesById,
   updateSubServices,
+
   deleteSubServices,
 }

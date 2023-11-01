@@ -12,7 +12,8 @@ router.post(
   SubServicesController.createSubServices,
 )
 router.get('/', SubServicesController.getAllSubServices)
-router.get('/:id', SubServicesController.getSingleSubServices)
+router.get('/:id', SubServicesController.getSubServicesById)
+router.get('/serviceId/:id', SubServicesController.getSubServicesByServiceId)
 router.patch(
   '/:id',
   auth(ENUM_USER_ROLE.ADMIN),

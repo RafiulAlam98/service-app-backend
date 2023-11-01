@@ -13,8 +13,12 @@ const getAllSubServices = async () => {
   return result
 }
 
-const getSingleSubServices = async (id: string) => {
+const getSubServicesByServiceId = async (id: string) => {
   const result = await SubServices.find({ serviceId: id }).populate('serviceId')
+  return result
+}
+const getSubServicesById = async (id: string) => {
+  const result = await SubServices.findById(id).populate('serviceId')
   return result
 }
 
@@ -43,7 +47,8 @@ const deleteSubServices = async (id: string) => {
 export const SubServicesService = {
   createSubServices,
   getAllSubServices,
-  getSingleSubServices,
+  getSubServicesByServiceId,
+  getSubServicesById,
   updateSubServices,
   deleteSubServices,
 }
