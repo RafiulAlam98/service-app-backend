@@ -14,7 +14,7 @@ const getAllSubServices = async () => {
 }
 
 const getSingleSubServices = async (id: string) => {
-  const result = await SubServices.findById(id).populate('serviceId')
+  const result = await SubServices.find({ serviceId: id }).populate('serviceId')
   return result
 }
 

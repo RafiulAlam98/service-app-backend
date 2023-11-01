@@ -16,7 +16,7 @@ const getAllPackages = async () => {
 }
 
 const getSinglePackages = async (id: string) => {
-  const result = await Packages.findById(id)
+  const result = await Packages.find({ subServiceId: id })
     .populate('subServiceId')
     .populate('serviceId')
   return result
