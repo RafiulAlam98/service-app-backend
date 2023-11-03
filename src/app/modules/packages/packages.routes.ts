@@ -14,6 +14,7 @@ router.post(
 )
 router.get('/', PackagesController.getAllPackages)
 router.get('/:id', PackagesController.getSinglePackages)
+router.get('/subServiceId/:id', PackagesController.getPackagesBySubServiceId)
 router.patch(
   '/:id',
   auth(ENUM_USER_ROLE.ADMIN),

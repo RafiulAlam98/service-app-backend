@@ -33,6 +33,18 @@ const getSinglePackages = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
+const getPackagesBySubServiceId = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params
+    const result = await PackageService.getPackagesBySubServiceId(id)
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Package retrieved Successfully',
+      data: result,
+    })
+  },
+)
 
 const updatePackages = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
@@ -61,6 +73,7 @@ export const PackagesController = {
   createPackages,
   getAllPackages,
   getSinglePackages,
+  getPackagesBySubServiceId,
   updatePackages,
   deletePackages,
 }

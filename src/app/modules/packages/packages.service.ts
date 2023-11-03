@@ -16,6 +16,13 @@ const getAllPackages = async () => {
 }
 
 const getSinglePackages = async (id: string) => {
+  const result = await Packages.findById(id)
+    .populate('subServiceId')
+    .populate('serviceId')
+  return result
+}
+
+const getPackagesBySubServiceId = async (id: string) => {
   const result = await Packages.find({ subServiceId: id })
     .populate('subServiceId')
     .populate('serviceId')
@@ -49,5 +56,6 @@ export const PackageService = {
   getAllPackages,
   updatePackages,
   deletePackages,
+  getPackagesBySubServiceId,
   getSinglePackages,
 }

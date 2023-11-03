@@ -26,7 +26,7 @@ const getAllSubServices = catchAsync(async (req: Request, res: Response) => {
 const getSubServicesByServiceId = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params
-    console.log(id)
+
     const result = await SubServicesService.getSubServicesByServiceId(id)
     sendResponse(res, {
       statusCode: httpStatus.OK,
