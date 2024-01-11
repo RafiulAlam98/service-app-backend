@@ -37,12 +37,114 @@ npm install
 
 ### API Endpoints
 
+### Users
+
+- `GET /api/v1/users`: Get All Users
+- `GET /api/v1/users/:id` Get Users By Id
+- `POST /api/v1/users/signup`: Add New Users (SignUp)
+- `PATCH /api/v1/users/:id`: Update Users by Id
+- `DELETE /api/v1/users/:id`: Delete a specific Users.
+
+
+### Admin
+
+- `GET /api/v1/admins`: Get All Admin
+- `GET /api/v1/admins/:id` Get Admin By Id
+- `POST /api/v1/admins/create-admin`: Add New Admin (SignUp)
+- `PATCH /api/v1/admins/:id`: Update Admin by Id
+- `DELETE /api/v1/admins/:id`: Delete a specific Admin.
+
+
+### Auth
+
+- `POST /api/v1/auth/login`: For Login
+- `GET /api/v1/users/my-profile` Get My Profile
+- `PATCH api/v1/users/my-profile`: Update My Profile
+
+
 ### Services
 
 - `GET /api/v1/services`: Get All Service
 - `GET /api/v1/services/:id` Get Service By Id
 - `POST /api/v1/services`: Add New Service
-- `PUT /api/v1/services/:id`: Update Service by Id
+- `PATCH /api/v1/services/:id`: Update Service by Id
 - `DELETE /api/v1/services/:id`: Delete a specific service.
+
+
+### Sub Services
+
+- `GET /api/v1/sub-services`: Get All Sub Services
+- `GET /api/v1/sub-services/:id` Get Sub Services By Id
+- `POST /api/v1/sub-services`: Add New Sub Services
+- `PATCH /api/v1/sub-services/:id`: Update Sub Services by Id
+- `DELETE /api/v1/sub-services/:id`: Delete a specific Sub Services.
+
+
+### Order
+
+- `GET /api/v1/order`: Get All Order
+- `GET /api/v1/order/:id` Get Order By Id
+- `POST /api/v1/order`: Add New Order
+- `PATCH /api/v1/order/:id`: Update Order by Id
+- `GET /api/v1/order/:email`: GET Order by User Email
+- `DELETE /api/v1/order/:id`: Delete a specific Order.
+
+
+### Feedback
+
+- `GET /api/v1/feedback`: Get All Feedback
+- `GET /api/v1/feedback/:id` Get Feedback By Id
+- `POST /api/v1/feedback`: Add New Feedback
+- `PATCH /api/v1/feedback/:id`: Update Feedback by Id
+- `DELETE /api/v1/feedback/:id`: Delete a specific Feedback.
+
+
+### Upcoming Services
+
+- `GET /api/v1/upcoming-services`: Get All Upcoming Services
+- `GET /api/v1/upcoming-services/:id` Get Upcoming Services By Id
+- `POST /api/v1/upcoming-services`: Add New Upcoming Services
+- `PATCH /api/v1/upcoming-services/:id`: Update Upcoming Services by Id
+- `DELETE /api/v1/upcoming-services/:id`: Delete a specific Upcoming Services.
+
+
+### Events
+
+- `GET /api/v1/events`: Get All Events
+- `GET /api/v1/events/:id` Get Events By Id
+- `POST /api/v1/events`: Add New Events
+- `PATCH /api/v1/events/:id`: Update Events by Id
+- `DELETE /api/v1/events/:id`: Delete a specific Events.
+
+
+### Blog
+
+- `GET /api/v1/blog`: Get All Blog
+- `GET /api/v1/blog/:id` Get Blog By Id
+- `POST /api/v1/blog`: Add New Blog
+- `PATCH /api/v1/blog/:id`: Update Blog by Id
+- `DELETE /api/v1/blog/:id`: Delete a specific Blog.
+
+
+### Blog
+
+- `GET /api/v1/blog`: Get All Blog
+- `GET /api/v1/blog/:id` Get Blog By Id
+- `POST /api/v1/blog`: Add New Blog
+- `PATCH /api/v1/blog/:id`: Update Blog by Id
+- `DELETE /api/v1/blog/:id`: Delete a specific Blog.
+
+
+### Faq
+
+- `GET /api/v1/faq`: Get All Faq
+- `GET /api/v1/faq/:id` Get Faq By Id
+- `POST /api/v1/faq`: Add New Faq
+- `PATCH /api/v1/faq/:id`: Update Faq by Id
+- `DELETE /api/v1/faq/:id`: Delete a specific Faq.
+
+
+
+
 
 
