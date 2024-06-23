@@ -40,10 +40,6 @@ const UserSchema = new Schema<IUser>(
       enum: ['user', 'admin', 'super_admin'],
       required: true,
     },
-    address: {
-      type: String,
-      required: false,
-    },
     profileImg: {
       type: String,
       required: false,

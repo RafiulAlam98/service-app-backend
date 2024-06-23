@@ -7,6 +7,7 @@ import { sendResponse } from '../../../shared/sendResponse'
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const result = await UserService.createUser(req.body)
+  console.log(req.body)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
