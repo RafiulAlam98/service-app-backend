@@ -9,6 +9,7 @@ import { IRefreshTokenResponse, IUserLogin } from './auth.interface'
 const loginUser = async (payload: IUserLogin) => {
   const { email: emailId, password } = payload
 
+  console.log(payload)
   // check user exist
   const isUserExists = await User.isUserExists(emailId)
 
@@ -26,7 +27,7 @@ const loginUser = async (payload: IUserLogin) => {
 
   const { phoneNumber, role, email } = isUserExists
 
-  console.log(email)
+
 
   // create access token
   const accessToken = jwt.sign(
@@ -39,6 +40,8 @@ const loginUser = async (payload: IUserLogin) => {
       expiresIn: config.jwt.secret_expire_in,
     },
   )
+
+
 
   const refreshToken = jwtHelpers.createToken(
     { phoneNumber, role },

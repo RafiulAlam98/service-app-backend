@@ -20,7 +20,7 @@ router.patch(
 router.post('/signup', UserController.createUser)
 router.get(
   '/',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  
   UserController.getAllUsers,
 )
 router.get(
