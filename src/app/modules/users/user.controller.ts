@@ -61,6 +61,7 @@ const deleteSingleUser = catchAsync(async (req: Request, res: Response) => {
 
 const userProfile = catchAsync(async (req: Request, res: Response) => {
   const { user } = req
+  console.log(user)
 
   const result = await UserService.userProfile(user)
   sendResponse(res, {

@@ -38,17 +38,12 @@ const AdminSchema = new Schema<IAdmin>(
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     profileImg: {
       type: String,
-      required: true,
-    },
-    permissions: {
-      type: String,
-      enum: ['view', 'update', 'delete'],
       required: false,
-    },
+    }
   },
   {
     timestamps: true,

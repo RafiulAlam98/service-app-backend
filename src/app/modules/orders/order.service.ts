@@ -17,6 +17,7 @@ const createOrder = async (payload: IOrders) => {
       'You have already booked an order on the selected date and time slot',
     )
   }
+  payload.status="pending"
 
   const result = await Orders.create(payload)
   return result
